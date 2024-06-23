@@ -1,4 +1,5 @@
 # Operating System Assignment 2 KURock ~
+3 types of Lock with Semaphore
 
 
 ### 3가지 종류의 Lock
