@@ -1,5 +1,5 @@
 # OS
-Operating System Assignment 2 KURock ~ <br/>
+## Operating System Assignment 2 KURock ~ <br/>
 
 
 <img src = "kurock.png">
