@@ -1,4 +1,4 @@
-## Operating System Assignment 2 KURock ~
+# Operating System Assignment 2 KURock ~
 
 
 ### 3가지 종류의 Lock
