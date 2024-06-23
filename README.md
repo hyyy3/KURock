@@ -1,10 +1,10 @@
 # OS
 Operating System Assignment 2 KURock ~ <br/>
-3 types of Lock with Semaphore
+
 
 <img src = "kurock.png">
 
-## 3가지 종류의 Lock
+## 3 types of Lock with Semaphore
 
 
 #### Step 1- rwrLock 
