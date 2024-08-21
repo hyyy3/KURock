@@ -5,7 +5,7 @@ typedef struct _rwwlock_t {
     sem_t readlock;
     sem_t lockforreadlock;
     int readers;
-    int write_request; // writer가 lock을 요청한 상황을 나타내는 플래그
+    int write_request; 
 } rwwlock_t;
 
 void rwwlock_init(rwwlock_t* rww);
@@ -23,18 +23,14 @@ void rwwlock_init(rwwlock_t* rww) {
 }
 
 void rwwlock_acquire_writelock(rwwlock_t* rww) {
-    // Writer가 lock을 요청했음을 표시
     sem_wait(&rww->lockforreadlock);
     rww->write_request = 1;
     sem_post(&rww->lockforreadlock);
 
-    // readlock을 잠금으로 설정하여 모든 reader가 종료되기를 대기
     sem_wait(&rww->readlock);
-    // writelock을 잠금으로 설정
 }
 
 void rwwlock_release_writelock(rwwlock_t* rww) {
-    // write_request 플래그를 리셋
     sem_wait(&rww->lockforreadlock);
     rww->write_request = 0;
     sem_post(&rww->lockforreadlock);
@@ -45,7 +41,6 @@ void rwwlock_release_writelock(rwwlock_t* rww) {
 
 void rwwlock_acquire_readlock(rwwlock_t* rww) {
     while (1) {
-        // reader가 새로운 읽기를 시도할 때 write_request를 확인
         sem_wait(&rww->lockforreadlock);
         if (rww->write_request == 0) {
             rww->readers++;
